@@ -18,6 +18,8 @@ export default function Home() {
         <h2>pig4</h2>
         <h2>wolf</h2>
       </div>
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </div>
   )
 }
