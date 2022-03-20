@@ -18,9 +18,25 @@ function inputBox() {
             message: inputRef.current.value, 
             name: "theusername",
             timestamp: serverTimestamp()
+        }).then (doc => {
+            if(imageToPost) {
+                removeImage();
+            }
         }) 
     inputRef.current.value = "";
     };
+    const addImageToPost = (e) => {
+        const reader = new FileReader();
+        if (e.target.files[0]) {
+            reader.readAsDataURL(e.target.files[0]);
+        }
+        reader.onload = (readerEvent) => {
+            setImageToPost(readerEvent.target.result);
+        }
+    }
+    const removeImage = () => {
+        setImageToPost(null);
+    }
   return (
   <div className="p-2 rounded-2xl shadow-md text-gray-500 font-medium mt-6" id="inputsection">
       <div className="flex space-x-4 p-4 items-center">
@@ -32,6 +48,13 @@ function inputBox() {
                 placeholder="type something idk"/>
                 <button hidden type="submit" onClick={sendPost}>Submit</button>
           </form>
+          {imageToPost && (
+              <div onClick={removeImage} className="flex flex-col filter hover:brightness-110 transition
+              duration-150 transform hover:scale-105 cursor-pointer"> 
+                  <img className="h-10 object-contain" src={imageToPost} alt=''></img>
+                  <p className="text-xs text-red-500 text-center">Remove</p>
+              </div>
+          )}
       </div>
         <div className="flex justify-evenly p-3 border-t">
             <div className="inputIcon">
@@ -44,7 +67,8 @@ function inputBox() {
                 <input
                 type="file"
                 ref = {filepickerRef}
-                hidden/>
+                hidden
+                onChange = {addImageToPost}/>
             </div>
             <div className="inputIcon">
                 <EmojiHappyIcon className="h-7 text-yellow-200" /> 
