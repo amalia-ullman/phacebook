@@ -24,7 +24,7 @@ function Stories() {
                 username = {story.username}
                 src = {story.src}
                 pfp = {story.pfp}
-                caption = {story.caption}
+                /*caption = {story.caption}*/
                 />
             ))
         }
