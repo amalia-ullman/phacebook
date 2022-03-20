@@ -1,0 +1,2 @@
+## Greetings
+I've gathered you all here today to explain components. We've decided as a council that each component should be treated like an individual with its own javascript file, dignity, and independence. They can be called into our pages, but will only come if they are willng. 
